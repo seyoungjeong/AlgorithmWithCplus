@@ -9,7 +9,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "CodeLLDB - Build and debug active file",
+            "name": "CodeLLDB",
             // "type": "cppdbg",
             "type": "lldb",
             "request": "launch",
@@ -21,7 +21,22 @@
             //"environment": [],
             //"externalConsole": false,
             //"MIMode": "lldb",
-            "preLaunchTask": "C/C++: clang++ build active file"
+            "preLaunchTask": "clang++ source build"
+        },        
+        {
+            "name": "CodeLLDB with gtest",
+            // "type": "cppdbg",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            //"stopAtEntry": true,
+            "stopOnEntry": false,
+            "cwd": "${fileDirname}",
+            //"environment": [],
+            //"externalConsole": false,
+            //"MIMode": "lldb",
+            "preLaunchTask": "clang++ gtest build"
         }
     ]
 }
