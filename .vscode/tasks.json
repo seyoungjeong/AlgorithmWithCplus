@@ -9,7 +9,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/a.out"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -32,9 +32,10 @@
                 "-lgtest_main",
                 "-lgtest",
                 "-g",
-                "${file}",
+                "${fileDirname}/**.cpp",
+                // "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/a.out"
             ],
             "options": {
                 "cwd": "${fileDirname}"
