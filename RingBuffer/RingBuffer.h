@@ -33,11 +33,13 @@ public:
         return _len;
     }
 
-    bool enqueue(const uint32_t* data, size_t len) {
+    bool enqueue(const uint32_t * data, size_t len) {
         if (len > get_free()) {
             return false;
         }
-        size_t len_to_end = _wid >= _rid 
+        // [room...] _rid [...data...] _wid [...room]
+        // [data...] _wid [...room...] _rid [...data]
+        size_t len_to_end = _wid >= _rid
             ? min(len, _cap - _wid) : min(len, _rid - _wid);
         memcpy(_buffer + _wid, data, len_to_end);
         size_t remaining = len - len_to_end;
@@ -49,11 +51,11 @@ public:
         return true;
     }
 
-    bool dequeue(uint32_t* data, size_t len) {
+    bool dequeue(uint32_t * data, size_t len) {
         if (len > get_length()) {
             return false;
         }
-        size_t len_to_end = _wid >= _rid 
+        size_t len_to_end = _wid >= _rid
             ? min(len, _wid - _rid) : min(len, _cap - _rid);
         memcpy(data, _buffer + _rid, len_to_end);
         size_t remaining = len - len_to_end;
