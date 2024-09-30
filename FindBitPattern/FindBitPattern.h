@@ -4,6 +4,8 @@
 
 namespace FindBitPatternNS {
 
-bool findBitPattern( ::std::byte src[], ::std::byte pattern[] );
+using namespace std;
 
-}
+bool findBitPattern( vector<uint32_t> & src, vector<uint32_t> & pattern );
+
+} // namesace:w
